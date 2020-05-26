@@ -14,19 +14,18 @@ void updateButtons() {
         it.second->updatePress();
     }
 
-    //Quit the game
-    if (buttons["EXIT_BTN"]->isPressed()) {
-        std::cout << "EXIT" <<std::endl;
-    }
-
     //Opens settings
-    if (buttons["SETTINGS_BTN"]->isPressed()) {
-        std::cout << "SETTING" << std::endl;
+    if (buttons["BTN1"]->isPressed()) {
+        std::cout << "ON1" << std::endl;
     }
 
     //Plays the game
-    if (buttons["PLAY_BTN"]->isPressed()) {
-        std::cout << "PLAY" << std::endl;
+    if (buttons["BTN2"]->isPressed()) {
+        std::cout << "ON2" << std::endl;
+    }
+    //Plays the game
+    if (buttons["BTN3"]->isPressed()) {
+        std::cout << "ON3" << std::endl;
     }
 
 }
@@ -42,29 +41,29 @@ void renderButtons(sf::RenderWindow *target) {
 void initButtons(sf::RenderWindow &window) {
     //Creating buttons
 
-    buttons["PLAY_BTN"] = new Button(300, 450, 100, 50,
-        &font, "1",
+    buttons["BTN1"] = new Button(150, 50, 100, 50,
+        &font, "BTN1",
         sf::Color(0, 0, 0),
-        sf::Color(255, 255, 255),
-        sf::Color(40, 40, 40), &window);
+        sf::Color(0, 255, 0),
+        sf::Color(40, 40, 40), &window, BTN_TOGGLE);
 
-    buttons["EXIT_BTN"] = new Button(300, 550, 100, 50,
-        &font, "2",
+    buttons["BTN2"] = new Button(150, 175, 100, 50,
+        &font, "BTN2",
         sf::Color(0, 0, 0),
-        sf::Color(255, 255, 255),
-        sf::Color(40, 40, 40), &window);
+        sf::Color(0, 255, 0),
+        sf::Color(40, 40, 40), &window, BTN_TOGGLE);
 
-    buttons["SETTINGS_BTN"] = new Button(300, 650, 100, 50,
-        &font, "3",
+    buttons["BTN3"] = new Button(150, 300, 100, 50,
+        &font, "BTN3",
         sf::Color(0, 0, 0),
         sf::Color(255, 255, 255),
-        sf::Color(40, 40, 40), &window);
+        sf::Color(40, 40, 40), &window, BTN_STANDARD);
 
 }
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(1000, 1000), "SFML works!", sf::Style::Close);
+    sf::RenderWindow window(sf::VideoMode(400, 400), "SFML works!", sf::Style::Close);
 
     font.loadFromFile("Fonts/arial.ttf");
     initButtons(window);

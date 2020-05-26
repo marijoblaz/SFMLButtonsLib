@@ -16,16 +16,31 @@ enum button_states
 	BTN_HOVERED
 };
 
+enum button_style
+{
+	BTN_STANDARD = 0,
+	BTN_TOGGLE
+};
 
 class Button
 {
 private:
 
 	short unsigned buttonState;
+	short unsigned buttonStyle;
+
+	bool toogle = false;
+
+	sf::Clock clock; // starts the clock
+	sf::Time elapsed1;
+
 	sf::RenderWindow* window;
 
-	//init shape
+	//init standard shape
 	sf::RectangleShape bShape;
+
+	//init toogle shape
+	sf::CircleShape bShapeCirc;
 
 	//init text/font
 	sf::Font* font;
@@ -44,7 +59,7 @@ private:
 
 
 public:
-	Button(float x, float y, float width, float height, sf::Font* font, std::string text, sf::Color idleColor, sf::Color pressColor, sf::Color hoverColor, sf::RenderWindow* window);
+	Button(float x, float y, float width, float height, sf::Font* font, std::string text, sf::Color idleColor, sf::Color pressColor, sf::Color hoverColor, sf::RenderWindow* window, short unsigned style);
 	virtual ~Button();
 
 	//funs
